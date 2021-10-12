@@ -13,13 +13,10 @@ public class UserDao {
                 " (?, ?, ?, ?, ?,?,?);";
 
         int result = 0;
-
         Class.forName("org.postgresql.Driver");
 
         try (Connection connection = DriverManager
                 .getConnection("jdbc:postgresql://localhost:5432/university_database", "postgres", "qwerty007");
-
-             // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setInt(1, 1);
             preparedStatement.setString(2, user.getFirstName());
@@ -30,7 +27,6 @@ public class UserDao {
             preparedStatement.setString(7, user.getFaculty_name());
 
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
             result = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

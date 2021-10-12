@@ -49,7 +49,6 @@ public class UserServlet extends HttpServlet {
         try {
             userDao.registerUser(user);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/userdetails.jsp");
