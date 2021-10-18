@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class UserDao {
     public int registerUser(User user) throws ClassNotFoundException {
         String INSERT_USERS_SQL = "INSERT INTO users" +
-                "  (id, first_name, last_name, login, password, phone_number, faculty_name) VALUES " +
-                " (?, ?, ?, ?, ?,?,?);";
+                "  (first_name, last_name, login, password, phone_number, faculty_name) VALUES " +
+                " ( ?, ?, ?, ?,?,?);";
 
         int result = 0;
         Class.forName("org.postgresql.Driver");
@@ -18,19 +18,16 @@ public class UserDao {
         try (Connection connection = DriverManager
                 .getConnection("jdbc:postgresql://localhost:5432/university_database", "postgres", "qwerty007");
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            preparedStatement.setInt(1, 1);
-            preparedStatement.setString(2, user.getFirstName());
-            preparedStatement.setString(3, user.getLastName());
-            preparedStatement.setString(4, user.getLogin());
-            preparedStatement.setString(5, user.getPassword());
-            preparedStatement.setString(6, user.getPhone());
-            preparedStatement.setString(7, user.getFaculty_name());
-
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getLogin());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getPhone());
+            preparedStatement.setString(6, user.getFaculty_name());
             System.out.println(preparedStatement);
             result = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            // process sql exception
             printSQLException(e);
         }
         return result;

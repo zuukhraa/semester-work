@@ -24,7 +24,7 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().append("Servlet at: ").append(request.getContextPath());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/userregister.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/register.jsp");
         dispatcher.forward(request, response);
     }
 
