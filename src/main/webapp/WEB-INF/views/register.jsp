@@ -36,6 +36,7 @@
                 <td><input type="text" name="faculty_name" /></td>
             </tr>
         </table>
+    <br>
         <input type="submit" value="Submit" />
     </form>
 </div>
