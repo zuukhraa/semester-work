@@ -1,6 +1,6 @@
-package ru.itis.shagiakhmetova.net.model;
+package ru.itis.shagiakhmetova.net.dto;
 
-public class User {
+public class UserDto {
     private int id;
     private String firstName;
     private String lastName;
@@ -9,12 +9,7 @@ public class User {
     private String phone;
     private String faculty_name;
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
-    public User(int id, String firstName, String lastName, String login, String password, String phone, String faculty_name) {
+    public UserDto(int id, String firstName, String lastName, String login, String password, String phone, String faculty_name) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,17 +19,13 @@ public class User {
         this.faculty_name = faculty_name;
     }
 
-    public User(String firstName, String lastName, String login, String password, String phone, String faculty_name) {
+    public UserDto(String firstName, String lastName, String login, String password, String phone, String faculty_name) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
         this.password = password;
         this.phone = phone;
         this.faculty_name = faculty_name;
-    }
-
-    public User(int id, String first_name, String last_name, String password, String phone_number, String faculty_name) {
-        super();
     }
 
     public int getId() {
@@ -87,10 +78,6 @@ public class User {
 
     public String getFaculty_name() {
         return faculty_name;
-    }
-
-    public User(String password) {
-        this.password = password;
     }
 
     public void setFaculty_name(String faculty_name) {

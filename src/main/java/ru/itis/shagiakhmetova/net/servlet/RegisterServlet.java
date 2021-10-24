@@ -1,24 +1,19 @@
 package ru.itis.shagiakhmetova.net.servlet;
 
-import ru.itis.shagiakhmetova.net.dao.UserDao;
+import ru.itis.shagiakhmetova.net.dao.DaoImpl;
 import ru.itis.shagiakhmetova.net.model.User;
-
+import ru.itis.shagiakhmetova.net.service.UserServiceImpl;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private UserDao userDao;
 
-    public void init() {
-        userDao = new UserDao();
-    }
+    UserServiceImpl userService = new UserServiceImpl();
+    DaoImpl dao = new DaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,28 +24,20 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
         String faculty_name = request.getParameter("faculty_name");
-
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setLogin(login);
-        user.setPassword(password);
-        user.setPhone(phone);
-        user.setFaculty_name(faculty_name);
-
-        try {
-            userDao.registerUser(user);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (dao.findByLogin(login) == null) {
+            User newUser = new User(firstName, lastName, login, password, phone, faculty_name);
+            dao.save(newUser);
+            response.sendRedirect("/login");
+        } else {
+            response.sendRedirect("404.html");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/userdetails.jsp");
-        dispatcher.forward(request, response);
     }
 }
+
+

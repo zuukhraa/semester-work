@@ -1,7 +1,7 @@
-package ru.itis.shagiakhmetova.net.model;
+package ru.itis.shagiakhmetova.net.dto;
 
-public class User {
-    private int id;
+
+public class SignUpForm {
     private String firstName;
     private String lastName;
     private String login;
@@ -9,40 +9,13 @@ public class User {
     private String phone;
     private String faculty_name;
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
-    public User(int id, String firstName, String lastName, String login, String password, String phone, String faculty_name) {
-        this.id = id;
+    public SignUpForm(String firstName, String lastName, String login, String password, String phone, String faculty_name) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
         this.password = password;
         this.phone = phone;
         this.faculty_name = faculty_name;
-    }
-
-    public User(String firstName, String lastName, String login, String password, String phone, String faculty_name) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.login = login;
-        this.password = password;
-        this.phone = phone;
-        this.faculty_name = faculty_name;
-    }
-
-    public User(int id, String first_name, String last_name, String password, String phone_number, String faculty_name) {
-        super();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -89,11 +62,19 @@ public class User {
         return faculty_name;
     }
 
-    public User(String password) {
-        this.password = password;
-    }
-
     public void setFaculty_name(String faculty_name) {
         this.faculty_name = faculty_name;
+    }
+
+    @Override
+    public String toString() {
+        return "SignUpForm{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", faculty_name='" + faculty_name + '\'' +
+                '}';
     }
 }
