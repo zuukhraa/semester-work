@@ -1,5 +1,6 @@
 package ru.itis.shagiakhmetova.net.dao;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.itis.shagiakhmetova.net.helper.PostgresConnectionHelper;
@@ -8,49 +9,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DaoImpl implements Dao<User> {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(DaoImpl.class);
     private final Connection connection = PostgresConnectionHelper.getConnection();
 
     @Override
-    public boolean validate(User user) {
-        boolean status = false;
-        try {
-        PreparedStatement preparedStatement = connection.prepareStatement("select * from users where login = ? and password = ?");
-            preparedStatement.setString(1, user.getLogin());
-            preparedStatement.setString(2, user.getPassword());
-                System.out.println(preparedStatement);
-                ResultSet rs = preparedStatement.executeQuery();
-                status = rs.next();
-        } catch (SQLException e) {
-                printSQLException(e);
-            }
-            return status;
-        }
-
-    private void printSQLException(SQLException ex) {
-        for (Throwable e: ex) {
-            if (e instanceof SQLException) {
-                e.printStackTrace(System.err);
-                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
-                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
-                System.err.println("Message: " + e.getMessage());
-                Throwable t = ex.getCause();
-                while (t != null) {
-                    System.out.println("Cause: " + t);
-                    t = t.getCause();
-                }
-            }
-        }
-    }
-
-    @Override
     public List<User> getAll() {
         try {
             Statement statement = connection.createStatement();
-            String sql = "select * from users";
+            String sql = "select * from users;";
             ResultSet resultSet = statement.executeQuery(sql);
             List<User> users = new ArrayList<>();
             while (resultSet.next()) {
@@ -76,7 +44,7 @@ public class DaoImpl implements Dao<User> {
     public User get(int id) {
         try {
             Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM users;";
             ResultSet resultSet = statement.executeQuery(sql);
 
             User user = null;
@@ -84,12 +52,13 @@ public class DaoImpl implements Dao<User> {
             while (resultSet.next()) {
                 if(resultSet.getInt("id") == id) {
                     user = new User(
-                    resultSet.getInt("id"),
+                            resultSet.getInt("id"),
                             resultSet.getString("first_name"),
-                    resultSet.getString("last_name"),
-                    resultSet.getString("password"),
+                            resultSet.getString("last_name"),
+                            resultSet.getString("login"),
+                            resultSet.getString("password"),
                             resultSet.getString("phone_number"),
-                    resultSet.getString("faculty_name"));
+                            resultSet.getString("faculty_name"));
                 }
             }
 
@@ -118,13 +87,13 @@ public class DaoImpl implements Dao<User> {
             LOGGER.warn("Failed to save new user.", throwables);
         }
     }
-
+    @Override
     public User findByLogin(String login) {
         try {
-            Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM users";
-            ResultSet resultSet = statement.executeQuery(sql);
-
+            String sql = "SELECT * FROM users where login = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
 
             while (resultSet.next()) {
@@ -133,6 +102,7 @@ public class DaoImpl implements Dao<User> {
                             resultSet.getInt("id"),
                             resultSet.getString("first_name"),
                             resultSet.getString("last_name"),
+                            resultSet.getString("login"),
                             resultSet.getString("password"),
                             resultSet.getString("phone_number"),
                             resultSet.getString("faculty_name"));
@@ -145,6 +115,32 @@ public class DaoImpl implements Dao<User> {
             return null;
         }
     }
+    @Override
+    public User findByLoginAndPassword(String login, String password) {
+        try {
+            String sql = "SELECT * FROM users where login = ? and password = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            User user = null;
+            while (resultSet.next()) {
+                if(resultSet.getString("login").equals(login) && resultSet.getString("password").equals(password)) {
+                    user = new User(
+                            resultSet.getInt("id"),
+                            resultSet.getString("first_name"),
+                            resultSet.getString("last_name"),
+                            resultSet.getString("login"),
+                            resultSet.getString("password"),
+                            resultSet.getString("phone_number"),
+                            resultSet.getString("faculty_name"));
+                }
+            }
+
+            return user;
+        } catch (SQLException throwables) {
+            LOGGER.warn("Failed execute get query.", throwables);
+            return null;
         }
-
-
+    }
+}

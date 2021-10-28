@@ -9,11 +9,6 @@ public class User {
     private String phone;
     private String faculty_name;
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
     public User(int id, String firstName, String lastName, String login, String password, String phone, String faculty_name) {
         this.id = id;
         this.firstName = firstName;
@@ -31,10 +26,6 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.faculty_name = faculty_name;
-    }
-
-    public User(int id, String first_name, String last_name, String password, String phone_number, String faculty_name) {
-        super();
     }
 
     public int getId() {
@@ -89,11 +80,24 @@ public class User {
         return faculty_name;
     }
 
-    public User(String password) {
+    public User(int id, String first_name, String last_name, String string, String phone_number, String password) {
         this.password = password;
     }
 
     public void setFaculty_name(String faculty_name) {
         this.faculty_name = faculty_name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", faculty_name='" + faculty_name + '\'' +
+                '}';
     }
 }

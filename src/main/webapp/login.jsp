@@ -1,30 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page import="java.util.Objects" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <html>
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
-<div align="center">
-    <h1>User Login Form</h1>
-    <form action="<%=request.getContextPath()%>/login" method="post">
-        <table style="with: 100%">
-            <tr>
-                <td>Your Login</td>
-                <td><input type="text" name="login" /></td>
-            </tr>
-            <tr>
-                <td>Your Password</td>
-                <td><input type="password" name="password" /></td>
-            </tr>
-
-        </table>
-            <input type="submit" value="Submit" />
-
-        <a href="/register">Create New Account</a>
-    </form>
+<div class="container">
+    <div class="header">
+        <h1>Вход</h1>
+    </div>
+    <div class="main">
+        <form action="${pageContext.request.contextPath}/login" method="post">
+            <span>
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="Логин" name="login">
+    </span><br>
+            <span>
+        <i class="fa fa-lock"></i>
+         <input type="password" placeholder="Пароль" name="password">
+    </span>
+            <br>
+            <button>Войти</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

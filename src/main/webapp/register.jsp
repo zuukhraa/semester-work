@@ -9,7 +9,7 @@
 
 <div class="shadowbox">
     <p>User Registration
-    <form action="<%= request.getContextPath() %>/register" method="post">
+    <form action="/register" method="post">
         <table style="with: 80%">
             <tr>
                 <td>First Name</td>
@@ -36,9 +36,10 @@
                 <td><input type="text" name="faculty_name" /></td>
             </tr>
         </table>
-    <br>
+        <br>
         <input type="submit" value="Submit" />
     </form>
 </div>
 </body>
 </html>
+

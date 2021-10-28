@@ -5,7 +5,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String login;
-    private String password;
+    private String hashPassword;
     private String phone;
     private String faculty_name;
 
@@ -14,7 +14,7 @@ public class UserDto {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
-        this.password = password;
+        this.hashPassword = password;
         this.phone = phone;
         this.faculty_name = faculty_name;
     }
@@ -23,17 +23,13 @@ public class UserDto {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
-        this.password = password;
+        this.hashPassword = password;
         this.phone = phone;
         this.faculty_name = faculty_name;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -60,12 +56,12 @@ public class UserDto {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHashPassword() {
+        return hashPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHashPassword(String hashPassword) {
+        this.hashPassword = hashPassword;
     }
 
     public String getPhone() {
