@@ -23,7 +23,7 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        resp.sendRedirect("index.html");
+        resp.sendRedirect("index.jsp");
     }
 }
 

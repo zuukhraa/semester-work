@@ -24,13 +24,13 @@ public class UserService implements UserServ {
     @Override
     public UserDto findByLogin(String login) {
         User user = dao.findByLogin(login);
-        return new UserDto(user.getFirstName(), user.getLastName(), user.getLogin(), user.getPassword(), user.getPhone(), user.getFaculty_name());
+        return new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getLogin(), user.getPassword(), user.getPhone(), user.getFaculty_name());
     }
 
     @Override
     public UserDto findByLoginAndPassword(String login, String password) {
         User user = dao.findByLoginAndPassword(login, password);
-        return new UserDto(user.getFirstName(), user.getLastName(), user.getLogin(), user.getPassword(), user.getPhone(), user.getFaculty_name());
+        return new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getLogin(), user.getPassword(), user.getPhone(), user.getFaculty_name());
     }
 
     @Override
@@ -46,6 +46,11 @@ public class UserService implements UserServ {
                 .map(user -> new UserDto(user.getId(), user.getFirstName(), user.getLastName(),
                          user.getLogin(), user.getPassword(), user.getPhone(), user.getFaculty_name()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void changeLogin(int id, String login) {
+        dao.changeLogin(id, login);
     }
 }
 

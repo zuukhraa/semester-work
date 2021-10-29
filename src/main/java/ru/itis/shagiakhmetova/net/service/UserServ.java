@@ -10,4 +10,5 @@ public interface UserServ {
     public UserDto findByLoginAndPassword(String login, String password);
     public List<UserDto> getAll();
     public UserDto get(int id);
+    public void changeLogin(int id, String login);
 }

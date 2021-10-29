@@ -1,5 +1,7 @@
 <html lang="en">
+<meta charset="UTF-8">
 <#include "head.ftl">
+
 <#macro title>Личная страница</#macro>
 <#macro content>
 <form action="/profile" method="post" novalidate enctype="multipart/form-data">

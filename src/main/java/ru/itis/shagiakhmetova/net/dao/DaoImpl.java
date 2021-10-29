@@ -143,4 +143,16 @@ public class DaoImpl implements Dao<User> {
             return null;
         }
     }
+
+    public void changeLogin(int id, String login) {
+        String sql = "UPDATE users SET login = ? WHERE users.id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, login);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            LOGGER.warn("Failed to update user.", throwables);
+        }
+    }
 }

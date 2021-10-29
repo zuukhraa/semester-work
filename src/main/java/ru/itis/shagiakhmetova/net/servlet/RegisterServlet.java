@@ -1,10 +1,12 @@
 package ru.itis.shagiakhmetova.net.servlet;
+
 import ru.itis.shagiakhmetova.net.model.User;
 import ru.itis.shagiakhmetova.net.service.UserServ;
 import ru.itis.shagiakhmetova.net.service.UserService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {

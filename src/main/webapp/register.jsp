@@ -1,11 +1,13 @@
 <%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=cp1251"%>
+<%@ page pageEncoding="cp1251"%>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Title</title>
 </head>
 <body>
+<%@include file="/WEB-INF/head.jsp" %>
 
 <div class="shadowbox">
     <p>User Registration

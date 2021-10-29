@@ -20,13 +20,12 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("login")==null) {
-            request.getRequestDispatcher(request.getContextPath()+"index.html").forward(request,response);
+        if (session == null || session.getAttribute("user")==null) {
+            request.getRequestDispatcher(request.getContextPath()+"index.jsp").forward(request,response);
         } else {
             filterChain.doFilter(request,response);
         }
     }
-
     @Override
     public void destroy() {}
 }
