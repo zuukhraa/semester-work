@@ -48,9 +48,9 @@ public class UserService implements UserServ {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public void changeLogin(int id, String login) {
-        dao.changeLogin(id, login);
-    }
+//    @Override
+//    public void changeLogin(int id, String login) {
+//        dao.changeLogin(id, login);
+//    }
 }
 

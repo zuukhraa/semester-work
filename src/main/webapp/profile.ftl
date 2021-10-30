@@ -10,8 +10,14 @@
 </form>
 
     <br>
+    <p class="lead">
+        <a href="/change" class="btn btn-outline-dark btn-sm btn-block">Изменить логин/пароль</a>
+    </p>
     <tr>
-        <td><p class="lead"><a href="/logout">Выйти</a></p></td>
+        <br>
+        <td>
+            <p class="lead"><a href="/logout">Выйти</a></p>
+        </td>
     </tr>
     <br>
 </#macro>

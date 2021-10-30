@@ -155,4 +155,16 @@ public class DaoImpl implements Dao<User> {
             LOGGER.warn("Failed to update user.", throwables);
         }
     }
+
+    public void changePassword(int id, String password) {
+        String sql = "UPDATE users SET password = ? WHERE users.id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            LOGGER.warn("Failed to update user.", throwables);
+        }
+    }
 }
