@@ -30,7 +30,7 @@
                     <button type="button">Поиск</button>
                 </div>
                 <div class="col">
-                    <a href="events.html">
+                    <a href="events.jsp">
                         <div class="card card1">
                             <h5>Мероприятия</h5>
                             <p></p>

@@ -1,16 +1,14 @@
-<%@ page import="java.util.Objects" %>
 <%@ page language="java" contentType="text/html;charset=cp1251"%>
 <%@ page pageEncoding="cp1251"%>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<html>
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-    <title>login</title>
-<%--    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">--%>
-<%--     <link rel="stylesheet" type="text/css" href="css/login.css">--%>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <%@include file="/WEB-INF/head.jsp" %>
-
 <%
     Cookie[] cookies=request.getCookies();
     String login= "", password = "",rememberMe="";
@@ -28,27 +26,22 @@
         }
     }
 %>
-<div class="container">
-    <div class="header">
-        <h1>Вход</h1>
-    </div>
-    <div class="main">
-        <form action="${pageContext.request.contextPath}/login" method="post">
-            <span>
-        <i class="fa fa-user"></i>
-        <input type="text" placeholder="Логин" name="login">
-    </span><br>
-            <span>
-        <i class="fa fa-lock"></i>
-         <input type="password" placeholder="Пароль" name="password">
-    </span>
-            <p class="lead">
-                <label><input type="checkbox" value="rememberMe"> Запомнить меня?</label>
-            </p>
-            <br>
-            <button>Войти</button>
-        </form>
-    </div>
+<div class="center">
+    <h1>Вход</h1>
+    <form action="/login" method="post">
+        <div class="txt_field">
+            <input type="text" name="login" placeholder="Логин">
+        </div>
+        <div class="txt_field">
+            <input type="password" name="password" placeholder="Пароль">
+        </div>
+        <input type="submit" value="Войти">
+<%--        <br>--%>
+<%--        <label><input type="checkbox" value="rememberMe">Запомнить меня?</label>--%>
+        <div class="signup_link">Нет аккаунта?
+            <a href="/register">Регистрация</a>
+        </div>
+    </form>
 </div>
 </body>
 </html>

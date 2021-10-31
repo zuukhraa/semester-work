@@ -1,45 +1,39 @@
-<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page language="java" contentType="text/html;charset=cp1251"%>
 <%@ page pageEncoding="cp1251"%>
-<html>
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="ISO-8859-1">
     <title>Title</title>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <%@include file="/WEB-INF/head.jsp" %>
-
-<div class="shadowbox">
-    <p>User Registration
+<div class="center">
+    <h1>Ðåãèñòðàöèÿ</h1>
     <form action="/register" method="post">
-        <table style="with: 80%">
-            <tr>
-                <td>First Name</td>
-                <td><input type="text" name="firstName" /></td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td><input type="text" name="lastName" /></td>
-            </tr>
-            <tr>
-                <td>Login</td>
-                <td><input type="text" name="login" /></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" name="password" /></td>
-            </tr>
-            <tr>
-                <td>Phone</td>
-                <td><input type="text" name="phone" /></td>
-            </tr>
-            <tr>
-                <td>Faculty</td>
-                <td><input type="text" name="faculty_name" /></td>
-            </tr>
-        </table>
-        <br>
-        <input type="submit" value="Submit" />
+        <div class="txt_field">
+            <input type="text" name="firstName" placeholder="Èìÿ">
+        </div>
+        <div class="txt_field">
+            <input type="text" name="lastName" placeholder="Ôàìèëèÿ">
+        </div>
+        <div class="txt_field">
+            <input type="text" name="login" placeholder="Ëîãèí">
+        </div>
+        <div class="txt_field">
+            <input type="password" name="password" placeholder="Ïàðîëü">
+        </div>
+        <div class="txt_field">
+            <input type="text" name="phone" placeholder="Òåëåôîí">
+        </div>
+        <div class="txt_field">
+            <input type="text" name="faculty_name" placeholder="Ôàêóëüòåò">
+        </div>
+        <input type="submit" value="Çàðåãèñòðèðîâàòüñÿ">
+        <div class="signup_link">Åñòü àêêàóíò?
+            <a href="/login">Âîéòè</a>
+        </div>
     </form>
 </div>
 </body>

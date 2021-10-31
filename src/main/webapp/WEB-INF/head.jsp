@@ -12,5 +12,5 @@
         <li><a href="">Контакты</a></li>
     </ul>
 </nav>
-<img src="menu.png" class="menu-icon">
+<img class="menu-icon">
 </div>
