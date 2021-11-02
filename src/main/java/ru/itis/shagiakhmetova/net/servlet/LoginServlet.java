@@ -24,24 +24,24 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
-        String password = PasswordHelper.encrypt(request.getParameter("password"));
-        String rememberMe = request.getParameter("remember");
+        String password = (request.getParameter("password"));
+        String remember = request.getParameter("remember");
         if (!Objects.equals(login, "") && !Objects.equals(password, "")) {
-            User user = dao.findByLoginAndPassword(login, password);
+            User user = dao.findByLoginAndPassword(login, PasswordHelper.encrypt(password));
             if (user != null) {
-                if (user.getPassword().equals(password) && user.getLogin().equals(login)) {
+                if (user.getPassword().equals(PasswordHelper.encrypt(password)) && user.getLogin().equals(login)) {
                     HttpSession session = request.getSession();
-                    if (rememberMe != null && rememberMe.equals("rememberMe")) {
-                        Cookie userCookie = new Cookie("login", user.getLogin());
-                        Cookie passwordCookie = new Cookie("password", user.getPassword());
-                        Cookie rememberCookie = new Cookie("remember", rememberMe);
-                        userCookie.setMaxAge(24 * 60 * 60);
+                    if (remember != null) {
+                        Cookie loginCookie = new Cookie("loginCookie", login);
+                        Cookie passwordCookie = new Cookie("passwordCookie", password);
+                        Cookie rememberCookie = new Cookie("rememberCookie", remember);
+                        loginCookie.setMaxAge(24 * 60 * 60);
                         passwordCookie.setMaxAge(24 * 60 * 60);
                         rememberCookie.setMaxAge(24 * 60 * 60);
-                        response.addCookie(userCookie);
+                        response.addCookie(loginCookie);
                         response.addCookie(passwordCookie);
                         response.addCookie(rememberCookie);
-                    }
+                   }
                     session.setAttribute("user", user);
                     session.setMaxInactiveInterval(60 * 60 * 24);
                     response.sendRedirect("profile.ftl");

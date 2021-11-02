@@ -1,28 +1,28 @@
-<%@ page language="java" contentType="text/html;charset=cp1251"%>
-<%@ page pageEncoding="cp1251"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>Изменение данных</title>
+    <title>РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С…</title>
 </head>
 <body>
 <%@include file="/WEB-INF/head.jsp" %>
 <div class="position-absolute">
-    <h1>Введите новые данные. Не оставляйте поля пустыми. Если не хотите менять логин/пароль введите старое значение</h1>
+    <h1>Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ. РќРµ РѕСЃС‚Р°РІР»СЏР№С‚Рµ РїРѕР»СЏ РїСѓСЃС‚С‹РјРё. Р•СЃР»Рё РЅРµ С…РѕС‚РёС‚Рµ РјРµРЅСЏС‚СЊ Р»РѕРіРёРЅ/РїР°СЂРѕР»СЊ РІРІРµРґРёС‚Рµ СЃС‚Р°СЂРѕРµ Р·РЅР°С‡РµРЅРёРµ</h1>
     <br>
     <form method="post" action="/change">
         <p class="lead">
             <label>
-                <input type="text" name="login" placeholder="Новый логин">
+                <input type="text" name="login" placeholder="РќРѕРІС‹Р№ Р»РѕРіРёРЅ">
             </label>
         </p>
         <p class="lead">
             <label>
-                <input type="password" name="password" placeholder="Новый пароль">
+                <input type="password" name="password" placeholder="РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ">
             </label>
         </p>
         <br>
         <p class="lead">
-            <button type="submit" class="btn btn-outline-dark btn-sm btn-block">Сохранить</button>
+            <button type="submit" class="btn btn-outline-dark btn-sm btn-block">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
         </p>
     </form>
 </div>

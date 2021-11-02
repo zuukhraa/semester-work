@@ -11,4 +11,5 @@ public interface Dao<T> {
     T get(int id);
     public User findByLogin(String login);
     public User findByLoginAndPassword(String login, String password);
+
 }

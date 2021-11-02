@@ -1,5 +1,6 @@
 package ru.itis.shagiakhmetova.net.servlet;
 
+import ru.itis.shagiakhmetova.net.helper.Validator;
 import ru.itis.shagiakhmetova.net.model.User;
 import ru.itis.shagiakhmetova.net.service.UserServ;
 import ru.itis.shagiakhmetova.net.service.UserService;
@@ -26,14 +27,18 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
         String faculty_name = request.getParameter("faculty_name");
-        User newUser = new User(firstName, lastName, login, password, phone, faculty_name);
-        userService.save(newUser);
-        HttpSession session = request.getSession();
-        session.setAttribute("login", login);
-        session.setMaxInactiveInterval(60 * 60 * 24);
-        Cookie userCookie = new Cookie("login", login);
-        userCookie.setMaxAge(60 * 60 * 24);
-        response.addCookie(userCookie);
-        response.sendRedirect("/login");
+        if (Validator.checkLogin(login) && Validator.checkPassword(password)) {
+            User newUser = new User(firstName, lastName, login, password, phone, faculty_name);
+            userService.save(newUser);
+            HttpSession session = request.getSession();
+            session.setAttribute("login", login);
+            session.setMaxInactiveInterval(60 * 60 * 24);
+            Cookie userCookie = new Cookie("login", login);
+            userCookie.setMaxAge(60 * 60 * 24);
+            response.addCookie(userCookie);
+            response.sendRedirect("/login");
+        } else {
+            response.sendRedirect("failLoginOrPassword.jsp");
+        }
     }
 }

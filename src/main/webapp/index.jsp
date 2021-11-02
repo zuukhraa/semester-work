@@ -1,7 +1,7 @@
-<meta charset="UTF-8">
-<%@ page language="java" contentType="text/html;charset=cp1251"%>
-<%@ page pageEncoding="cp1251"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <html>
+<meta charset="UTF-8">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>~Website design</title>
@@ -15,41 +15,41 @@
             <div class="navbar">
                 <nav>
                     <ul>
-                        <li><a href="/profile">Личный кабинет</a></li>
-                        <li><a href="login.jsp">Вход</a></li>
-                        <li><a href="/register">Регистрация</a></li>
-                        <li><a href="">Контакты</a></li>
+                        <li><a href="/profile">Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚</a> </li>
+                        <li><a href="login.jsp">Р’С…РѕРґ</a></li>
+                        <li><a href="/register">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a></li>
+                        <li><a href="">РљРѕРЅС‚Р°РєС‚С‹</a></li>
                     </ul>
                 </nav>
                 <img src="menu.png" class="menu-icon">
             </div>
             <div class="row">
                 <div class="col">
-                    <h1>Казанский Федеральный Университет</h1>
+                    <h1>РљР°Р·Р°РЅСЃРєРёР№ Р¤РµРґРµСЂР°Р»СЊРЅС‹Р№ РЈРЅРёРІРµСЂСЃРёС‚РµС‚</h1>
                     <p></p>
-                    <button type="button">Поиск</button>
+                    <button type="button">РџРѕРёСЃРє</button>
                 </div>
                 <div class="col">
                     <a href="events.jsp">
                         <div class="card card1">
-                            <h5>Мероприятия</h5>
+                            <h5>РњРµСЂРѕРїСЂРёСЏС‚РёСЏ</h5>
                             <p></p>
                         </div>
                     </a>
                     <a href="inst.html">
                         <div class="card card2">
-                            <h5>Институты</h5>
+                            <h5>РРЅСЃС‚РёС‚СѓС‚С‹</h5>
                             <p></p>
                         </div>
                     </a>
                     <a href="abit.html">
                         <div class="card card3">
-                            <h5>Абитуриент</h5>
+                            <h5>РђР±РёС‚СѓСЂРёРµРЅС‚</h5>
                             <p></p>
                         </div>
                     </a>
                     <div class="card card4">
-                        <h5>История университета</h5>
+                        <h5>РСЃС‚РѕСЂРёСЏ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°</h5>
                         <p></p>
 
                     </div>

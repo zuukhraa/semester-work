@@ -21,7 +21,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user")==null) {
-            request.getRequestDispatcher(request.getContextPath()+"index.jsp").forward(request,response);
+            request.getRequestDispatcher(request.getContextPath()+"modal.jsp").forward(request,response);
         } else {
             filterChain.doFilter(request,response);
         }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html;charset=cp1251"%>
-<%@ page pageEncoding="cp1251"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <html lang="en" dir="ltr">
 <head>
     <title>Title</title>
@@ -10,29 +10,29 @@
 <body>
 <%@include file="/WEB-INF/head.jsp" %>
 <div class="center">
-    <h1>Регистрация</h1>
+    <h1>Р РµРіРёСЃС‚СЂР°С†РёСЏ</h1>
     <form action="/register" method="post">
         <div class="txt_field">
-            <input type="text" name="firstName" placeholder="Имя">
+            <input type="text" name="firstName" placeholder="РРјСЏ">
         </div>
         <div class="txt_field">
-            <input type="text" name="lastName" placeholder="Фамилия">
+            <input type="text" name="lastName" placeholder="Р¤Р°РјРёР»РёСЏ">
         </div>
         <div class="txt_field">
-            <input type="text" name="login" placeholder="Логин">
+            <input type="text" name="login" placeholder="Р›РѕРіРёРЅ">
         </div>
         <div class="txt_field">
-            <input type="password" name="password" placeholder="Пароль">
+            <input type="password" name="password" placeholder="РџР°СЂРѕР»СЊ">
         </div>
         <div class="txt_field">
-            <input type="text" name="phone" placeholder="Телефон">
+            <input type="text" name="phone" placeholder="РўРµР»РµС„РѕРЅ">
         </div>
         <div class="txt_field">
-            <input type="text" name="faculty_name" placeholder="Факультет">
+            <input type="text" name="faculty_name" placeholder="Р¤Р°РєСѓР»СЊС‚РµС‚">
         </div>
-        <input type="submit" value="Зарегистрироваться">
-        <div class="signup_link">Есть аккаунт?
-            <a href="/login">Войти</a>
+        <input type="submit" value="Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ">
+        <div class="signup_link">Р•СЃС‚СЊ Р°РєРєР°СѓРЅС‚?
+            <a href="/login">Р’РѕР№С‚Рё</a>
         </div>
     </form>
 </div>

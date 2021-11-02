@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html;charset=cp1251"%>
-<%@ page pageEncoding="cp1251"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
@@ -10,36 +10,38 @@
 <body>
 <%@include file="/WEB-INF/head.jsp" %>
 <%
+    String log= "", pass = "",remem="";
     Cookie[] cookies=request.getCookies();
-    String login= "", password = "",rememberMe="";
     if (cookies != null) {
         for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("login")) {
-                login = cookie.getValue();
+            if(cookie.getName().equals("loginCookie")) {
+                log = cookie.getValue();
             }
-            if(cookie.getName().equals("password")){
-                password = cookie.getValue();
+            if(cookie.getName().equals("passwordCookie")){
+                pass = cookie.getValue();
             }
-            if(cookie.getName().equals("remember")){
-                rememberMe = cookie.getValue();
+            if(cookie.getName().equals("rememberCookie")){
+                remem = cookie.getValue();
             }
         }
     }
 %>
 <div class="center">
-    <h1>Вход</h1>
+    <h1>Р’С…РѕРґ</h1>
     <form action="/login" method="post">
         <div class="txt_field">
-            <input type="text" name="login" placeholder="Логин">
+            <input type="text" name="login" value="<%=log%>" placeholder="Р›РѕРіРёРЅ">
         </div>
         <div class="txt_field">
-            <input type="password" name="password" placeholder="Пароль">
+            <input type="password" name="password" value="<%=pass%>" placeholder="РџР°СЂРѕР»СЊ">
         </div>
-        <input type="submit" value="Войти">
-<%--        <br>--%>
-<%--        <label><input type="checkbox" value="rememberMe">Запомнить меня?</label>--%>
-        <div class="signup_link">Нет аккаунта?
-            <a href="/register">Регистрация</a>
+        <input type="submit" value="Р’РѕР№С‚Рё">
+        <div class="signup_link">Remember me:
+            <input type="checkbox" name="remember" value="1"
+        <%="1".equals(remem) ? "checked='/checked'" : "" %> >
+        </div>
+        <div class="signup_link">РќРµС‚ Р°РєРєР°СѓРЅС‚Р°?
+            <a href="/register">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a>
         </div>
     </form>
 </div>

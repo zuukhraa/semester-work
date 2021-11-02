@@ -16,13 +16,13 @@ public class LecturersServlet extends HttpServlet {
     LecturerImpl lecturerImpl = new LecturerImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("lecturers.jsp");
+        response.sendRedirect("lecturers.ftl");
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Lecturer> lecturers = lecturerImpl.getAll();
         request.setAttribute("lecturers", lecturers);
-        request.getRequestDispatcher("lecturers.jsp").forward(request, response);
+        request.getRequestDispatcher("lecturers.ftl").forward(request, response);
     }
 }
 
